@@ -83,10 +83,19 @@ namespace JobPortal.Controllers
                 {
                     regid = maxRegid + 1;
                 }
-                objdb.sp_insertUserTable(regid, objCls.Name, objCls.Age, objCls.Address, objCls.Phone, objCls.genName, objCls.Qual, objCls.Skill, objCls.Experience, "Active");
-                objdb.sp_insertLoginTable(regid, objCls.Email, objCls.Password, "User");
-                objCls.Msg = "Inserted Successfully";
-                return View("UserReg_Pageload", objCls);
+                int cid = Convert.ToInt32(objdb.sp_countRegidMailCheck(objCls.Email).FirstOrDefault());
+                if (cid == 0)
+                {
+                    objdb.sp_insertUserTable(regid, objCls.Name, objCls.Age, objCls.Address, objCls.Phone, objCls.genName, objCls.Qual, objCls.Skill, objCls.Experience, "Active");
+                    objdb.sp_insertLoginTable(regid, objCls.Email, objCls.Password, "User");
+                    objCls.Msg = "Inserted Successfully";
+                    return View("UserReg_Pageload", objCls);
+                }
+                else
+                {
+                    objCls.Msg = "User already Exist";
+                    return View("UserReg_Pageload", objCls);
+                }
             }
             else
             {
