@@ -1,0 +1,112 @@
+﻿@model JobPortal.Models.UserReg
+@{
+    ViewBag.Title = "UserReg_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Registration</h2>
+<div>
+    @using (Html.BeginForm("UserReg_Click", "UserReg", FormMethod.Post))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+
+        <div>
+            <label>Age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Age)
+            @Html.ValidationMessageFor(m => m.Age)
+        </div>
+
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Address)
+            @Html.ValidationMessageFor(m => m.Address)
+        </div>
+
+        <div>
+            <label>Phone:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Phone)
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+
+        <div>
+            <label>Gender:</label>
+        </div>
+        <div>
+            @Html.DropDownList("ddlGender", (SelectList)ViewBag.gender, "--Select--", new { @class = "form-control" })
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.MyQual)
+            {
+                <label>
+                    <input type="checkbox" value="@item.Value" checked="@item.isChecked" name="selectedQual" id="@item.Text" />@Html.Raw(item.Text)
+                </label>
+            }
+        </div>
+
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.MySkill)
+            {
+                <label>
+                    <input type="checkbox" value="@item.Value" checked="@item.isChecked" name="selectedSkill" id="@item.Text" />@Html.Raw(item.Text)
+                </label>
+            }
+        </div>
+
+        <div>
+            <label>Experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Experience)
+            @Html.ValidationMessageFor(m => m.Experience)
+        </div>
+
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+
+        <div>
+            <label>Confirm Passsword:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.ConPassword)
+            @Html.ValidationMessageFor(m => m.ConPassword)
+        </div>
+
+        <div>
+            <input type="submit" value="Register" />
+            @Html.DisplayFor(m=>m.Msg)
+        </div>
+    }
+</div>
+

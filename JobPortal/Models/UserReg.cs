@@ -36,9 +36,13 @@ namespace JobPortal.Models
         [Required(ErrorMessage = "Enter the Number")]
         [RegularExpression(@"^[6789]\d{9}$", ErrorMessage = "Enter a Valid Phone number")]
         public string Phone { set; get; }
+        public string Qual { set; get; }
+        public string Skill { set; get; }
         [Required(ErrorMessage ="Enter the Experience")]        
         [Range(0,50,ErrorMessage ="Enter in Years(0-50)")]
         public int Experience { set; get; }
+        [EmailAddress(ErrorMessage ="Enter a valid Email Address")]
+        [Required(ErrorMessage ="Enter Email Address")]
         public string Email { set; get; }
         [Required(ErrorMessage = "Enter the Password")]
         public string Password { set; get; }
@@ -46,6 +50,5 @@ namespace JobPortal.Models
         [Compare("Password", ErrorMessage = "re-enter correct Password")]
         public string ConPassword { set; get; }
         public string Msg { set; get; }
-
     }
 }
