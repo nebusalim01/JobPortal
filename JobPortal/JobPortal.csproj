@@ -160,6 +160,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyReg.cs" />
     <Compile Include="Models\UserReg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="user_table.cs">
