@@ -16,7 +16,7 @@ namespace JobPortal
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "CompanyReg", action = "CompanyReg_Pageload", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "Login_Pageload", id = UrlParameter.Optional }
             );
         }
     }

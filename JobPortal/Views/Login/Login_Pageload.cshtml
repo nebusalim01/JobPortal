@@ -1,0 +1,37 @@
+﻿@model JobPortal.Models.LoginClass
+@{
+    ViewBag.Title = "Login_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login Page</h2>
+<div>
+    @using (Html.BeginForm("Login_Click", "Login", FormMethod.Post))
+    {
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m=>m.Email)
+            @Html.ValidationMessageFor(m=>m.Email)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m=>m.Password)
+            @Html.ValidationMessageFor(m=>m.Password)
+        </div>
+
+        <div>
+            <input type="submit" value="Login" />
+            @Html.DisplayFor(m => m.Msg)
+        </div>
+        <div>
+            @Html.ActionLink("User Registration", "UserReg_Pageload","UserReg")
+            @Html.ActionLink("Company Registration", "CompanyReg_Pageload","CompanyReg")
+        </div>        
+    }
+</div>
+

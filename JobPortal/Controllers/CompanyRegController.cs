@@ -33,7 +33,7 @@ namespace JobPortal.Controllers
                 if (cid == 0)
                 {
                     objdb.sp_insertCompanyTable(regid, objCls.Name, objCls.Description, objCls.Address, objCls.Phone);
-                    objdb.sp_insertLoginTable(regid, objCls.Email, objCls.Password, "Comapny");
+                    objdb.sp_insertLoginTable(regid, objCls.Email, objCls.Password, "Company");
                     objCls.Msg = "Inserted Successfully";
                     return View("CompanyReg_Pageload", objCls);
                 }
