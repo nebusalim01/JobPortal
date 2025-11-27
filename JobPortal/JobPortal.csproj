@@ -168,10 +168,14 @@
     <Compile Include="Models\CompanyProfile.cs" />
     <Compile Include="Models\CompanyReg.cs" />
     <Compile Include="Models\JobPost.cs" />
+    <Compile Include="Models\JobSearch.cs" />
     <Compile Include="Models\LoginClass.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Models\UserReg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_selectAllJob_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="user_table.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

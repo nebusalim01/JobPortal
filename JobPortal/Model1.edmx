@@ -116,6 +116,7 @@
           <Parameter Name="sts" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_maxRegid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_selectAllJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_selLoginType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="eml" Type="varchar" Mode="In" />
           <Parameter Name="pwd" Type="varchar" Mode="In" />
@@ -260,7 +261,23 @@
             <Parameter Name="jtyp" Mode="In" Type="String" />
             <Parameter Name="sts" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_selectAllJob" ReturnType="Collection(jobportalModel.sp_selectAllJob_Result)" />
         </EntityContainer>
+        <ComplexType Name="sp_selectAllJob_Result">
+          <Property Type="Int32" Name="Job_Id" Nullable="false" />
+          <Property Type="Int32" Name="Company_Id" Nullable="false" />
+          <Property Type="String" Name="Job_Title" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Job_Description" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Job_Location" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Job_Experience" Nullable="false" />
+          <Property Type="String" Name="Job_Skills" Nullable="false" MaxLength="300" />
+          <Property Type="String" Name="Job_Qualifications" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Passout_Year" Nullable="false" />
+          <Property Type="DateTime" Name="Start_Date" Nullable="false" />
+          <Property Type="DateTime" Name="End_Date" Nullable="false" />
+          <Property Type="String" Name="Job_Type" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Job_Status" Nullable="false" MaxLength="100" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -345,6 +362,25 @@
           <FunctionImportMapping FunctionImportName="sp_selLoginType" FunctionName="jobportalModel.Store.sp_selLoginType" />
           <FunctionImportMapping FunctionImportName="sp_selRegid" FunctionName="jobportalModel.Store.sp_selRegid" />
           <FunctionImportMapping FunctionImportName="sp_jobPostInsert" FunctionName="jobportalModel.Store.sp_jobPostInsert" />
+          <FunctionImportMapping FunctionImportName="sp_selectAllJob" FunctionName="jobportalModel.Store.sp_selectAllJob">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="jobportalModel.sp_selectAllJob_Result">
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+                <ScalarProperty Name="Company_Id" ColumnName="Company_Id" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job_Title" />
+                <ScalarProperty Name="Job_Description" ColumnName="Job_Description" />
+                <ScalarProperty Name="Job_Location" ColumnName="Job_Location" />
+                <ScalarProperty Name="Job_Experience" ColumnName="Job_Experience" />
+                <ScalarProperty Name="Job_Skills" ColumnName="Job_Skills" />
+                <ScalarProperty Name="Job_Qualifications" ColumnName="Job_Qualifications" />
+                <ScalarProperty Name="Passout_Year" ColumnName="Passout_Year" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Job_Type" ColumnName="Job_Type" />
+                <ScalarProperty Name="Job_Status" ColumnName="Job_Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

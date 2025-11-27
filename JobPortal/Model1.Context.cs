@@ -229,5 +229,10 @@ namespace JobPortal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobPostInsert", cidParameter, titleParameter, desParameter, locParameter, expParameter, sklParameter, qulParameter, pasParameter, stdateParameter, enddatParameter, jtypParameter, stsParameter);
         }
+    
+        public virtual ObjectResult<sp_selectAllJob_Result> sp_selectAllJob()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectAllJob_Result>("sp_selectAllJob");
+        }
     }
 }
