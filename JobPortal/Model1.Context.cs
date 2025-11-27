@@ -176,5 +176,58 @@ namespace JobPortal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_selRegid", emlParameter, pwdParameter);
         }
+    
+        public virtual int sp_jobPostInsert(Nullable<int> cid, string title, string des, string loc, Nullable<int> exp, string skl, string qul, Nullable<int> pas, Nullable<System.DateTime> stdate, Nullable<System.DateTime> enddat, string jtyp, string sts)
+        {
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var desParameter = des != null ?
+                new ObjectParameter("des", des) :
+                new ObjectParameter("des", typeof(string));
+    
+            var locParameter = loc != null ?
+                new ObjectParameter("loc", loc) :
+                new ObjectParameter("loc", typeof(string));
+    
+            var expParameter = exp.HasValue ?
+                new ObjectParameter("exp", exp) :
+                new ObjectParameter("exp", typeof(int));
+    
+            var sklParameter = skl != null ?
+                new ObjectParameter("skl", skl) :
+                new ObjectParameter("skl", typeof(string));
+    
+            var qulParameter = qul != null ?
+                new ObjectParameter("qul", qul) :
+                new ObjectParameter("qul", typeof(string));
+    
+            var pasParameter = pas.HasValue ?
+                new ObjectParameter("pas", pas) :
+                new ObjectParameter("pas", typeof(int));
+    
+            var stdateParameter = stdate.HasValue ?
+                new ObjectParameter("stdate", stdate) :
+                new ObjectParameter("stdate", typeof(System.DateTime));
+    
+            var enddatParameter = enddat.HasValue ?
+                new ObjectParameter("enddat", enddat) :
+                new ObjectParameter("enddat", typeof(System.DateTime));
+    
+            var jtypParameter = jtyp != null ?
+                new ObjectParameter("jtyp", jtyp) :
+                new ObjectParameter("jtyp", typeof(string));
+    
+            var stsParameter = sts != null ?
+                new ObjectParameter("sts", sts) :
+                new ObjectParameter("sts", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobPostInsert", cidParameter, titleParameter, desParameter, locParameter, expParameter, sklParameter, qulParameter, pasParameter, stdateParameter, enddatParameter, jtypParameter, stsParameter);
+        }
     }
 }

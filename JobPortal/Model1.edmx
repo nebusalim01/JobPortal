@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="jobportalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="jobportalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="application_table">
           <Key>
             <PropertyRef Name="Application_Id" />
@@ -101,6 +101,20 @@
           <Parameter Name="exp" Type="int" Mode="In" />
           <Parameter Name="sts" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_jobPostInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cid" Type="int" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="des" Type="varchar" Mode="In" />
+          <Parameter Name="loc" Type="varchar" Mode="In" />
+          <Parameter Name="exp" Type="int" Mode="In" />
+          <Parameter Name="skl" Type="varchar" Mode="In" />
+          <Parameter Name="qul" Type="varchar" Mode="In" />
+          <Parameter Name="pas" Type="int" Mode="In" />
+          <Parameter Name="stdate" Type="date" Mode="In" />
+          <Parameter Name="enddat" Type="date" Mode="In" />
+          <Parameter Name="jtyp" Type="varchar" Mode="In" />
+          <Parameter Name="sts" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_maxRegid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_selLoginType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="eml" Type="varchar" Mode="In" />
@@ -117,8 +131,7 @@
           <EntitySet Name="login_table" EntityType="Self.login_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_table" EntityType="Self.user_table" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="jobportalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -197,7 +210,7 @@
             <Parameter Name="pwd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_countRegidMailCheck" ReturnType="Collection(Int32)">
-            <Parameter Name="eml" Mode="In" Type="String" />
+          <Parameter Name="eml" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_insertCompanyTable">
             <Parameter Name="cid" Mode="In" Type="Int32" />
@@ -232,6 +245,20 @@
           <FunctionImport Name="sp_selRegid" ReturnType="Collection(Int32)">
             <Parameter Name="eml" Mode="In" Type="String" />
             <Parameter Name="pwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_jobPostInsert">
+            <Parameter Name="cid" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="des" Mode="In" Type="String" />
+            <Parameter Name="loc" Mode="In" Type="String" />
+            <Parameter Name="exp" Mode="In" Type="Int32" />
+            <Parameter Name="skl" Mode="In" Type="String" />
+            <Parameter Name="qul" Mode="In" Type="String" />
+            <Parameter Name="pas" Mode="In" Type="Int32" />
+            <Parameter Name="stdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddat" Mode="In" Type="DateTime" />
+            <Parameter Name="jtyp" Mode="In" Type="String" />
+            <Parameter Name="sts" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -317,6 +344,7 @@
           <FunctionImportMapping FunctionImportName="sp_maxRegid" FunctionName="jobportalModel.Store.sp_maxRegid" />
           <FunctionImportMapping FunctionImportName="sp_selLoginType" FunctionName="jobportalModel.Store.sp_selLoginType" />
           <FunctionImportMapping FunctionImportName="sp_selRegid" FunctionName="jobportalModel.Store.sp_selRegid" />
+          <FunctionImportMapping FunctionImportName="sp_jobPostInsert" FunctionName="jobportalModel.Store.sp_jobPostInsert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

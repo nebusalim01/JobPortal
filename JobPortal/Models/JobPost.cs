@@ -35,10 +35,11 @@ namespace JobPortal.Models
         [RegularExpression(@"^(19|20)\d{2}$",ErrorMessage ="Enter a Valid Year")]
         public int PassOutYear { set; get; }
         [Required(ErrorMessage = "Enter Start Date")]
-        public DateTime startDate { set; get; }
+        public DateTime StartDate { set; get; }
         [Required(ErrorMessage = "Enter End Date")]
-        public DateTime endDate { set; get; }
+        public DateTime EndDate { set; get; }
         [Required(ErrorMessage ="Enter Job Type")]
         public string JobType { set; get; }
+        public string Msg { set; get; }
     }
 }
