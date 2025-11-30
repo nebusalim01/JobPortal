@@ -40,6 +40,9 @@ namespace JobPortal.Models
         public DateTime EndDate { set; get; }
         [Required(ErrorMessage ="Enter Job Type")]
         public string JobType { set; get; }
+        [Required(ErrorMessage = "Enter the Salary")]
+        
+        public string Salary { set; get; }
         public string Msg { set; get; }
     }
 }

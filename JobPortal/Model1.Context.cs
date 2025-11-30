@@ -177,7 +177,7 @@ namespace JobPortal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_selRegid", emlParameter, pwdParameter);
         }
     
-        public virtual int sp_jobPostInsert(Nullable<int> cid, string title, string des, string loc, Nullable<int> exp, string skl, string qul, Nullable<int> pas, Nullable<System.DateTime> stdate, Nullable<System.DateTime> enddat, string jtyp, string sts)
+        public virtual int sp_jobPostInsert(Nullable<int> cid, string title, string des, string loc, Nullable<int> exp, string skl, string qul, Nullable<int> pas, Nullable<System.DateTime> stdate, Nullable<System.DateTime> enddat, string jtyp, string sts, string sal)
         {
             var cidParameter = cid.HasValue ?
                 new ObjectParameter("cid", cid) :
@@ -227,12 +227,86 @@ namespace JobPortal
                 new ObjectParameter("sts", sts) :
                 new ObjectParameter("sts", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobPostInsert", cidParameter, titleParameter, desParameter, locParameter, expParameter, sklParameter, qulParameter, pasParameter, stdateParameter, enddatParameter, jtypParameter, stsParameter);
+            var salParameter = sal != null ?
+                new ObjectParameter("sal", sal) :
+                new ObjectParameter("sal", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobPostInsert", cidParameter, titleParameter, desParameter, locParameter, expParameter, sklParameter, qulParameter, pasParameter, stdateParameter, enddatParameter, jtypParameter, stsParameter, salParameter);
         }
     
         public virtual ObjectResult<sp_selectAllJob_Result> sp_selectAllJob()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectAllJob_Result>("sp_selectAllJob");
+        }
+    
+        public virtual int sp_jobSearch(string qry)
+        {
+            var qryParameter = qry != null ?
+                new ObjectParameter("qry", qry) :
+                new ObjectParameter("qry", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobSearch", qryParameter);
+        }
+    
+        public virtual ObjectResult<sp_selectAllJob1_Result> sp_selectAllJob1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectAllJob1_Result>("sp_selectAllJob1");
+        }
+    
+        public virtual ObjectResult<sp_selectJobs_Result> sp_selectJobs()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectJobs_Result>("sp_selectJobs");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_AppCount(Nullable<int> uid, Nullable<int> jid)
+        {
+            var uidParameter = uid.HasValue ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(int));
+    
+            var jidParameter = jid.HasValue ?
+                new ObjectParameter("jid", jid) :
+                new ObjectParameter("jid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_AppCount", uidParameter, jidParameter);
+        }
+    
+        public virtual int sp_InsertApplication(Nullable<int> uid, Nullable<int> jid, Nullable<System.DateTime> appdate, string res, string sts)
+        {
+            var uidParameter = uid.HasValue ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(int));
+    
+            var jidParameter = jid.HasValue ?
+                new ObjectParameter("jid", jid) :
+                new ObjectParameter("jid", typeof(int));
+    
+            var appdateParameter = appdate.HasValue ?
+                new ObjectParameter("appdate", appdate) :
+                new ObjectParameter("appdate", typeof(System.DateTime));
+    
+            var resParameter = res != null ?
+                new ObjectParameter("res", res) :
+                new ObjectParameter("res", typeof(string));
+    
+            var stsParameter = sts != null ?
+                new ObjectParameter("sts", sts) :
+                new ObjectParameter("sts", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertApplication", uidParameter, jidParameter, appdateParameter, resParameter, stsParameter);
+        }
+    
+        public virtual ObjectResult<sp_SelectOneJob_Result> sp_SelectOneJob(Nullable<int> cid, Nullable<int> jid)
+        {
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var jidParameter = jid.HasValue ?
+                new ObjectParameter("jid", jid) :
+                new ObjectParameter("jid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SelectOneJob_Result>("sp_SelectOneJob", cidParameter, jidParameter);
         }
     }
 }

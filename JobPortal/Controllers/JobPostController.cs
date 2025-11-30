@@ -54,7 +54,7 @@ namespace JobPortal.Controllers
                 var skl = string.Join(",", objCls.selectedSkill);
                 objCls.Skill = skl;
                 objCls.MySkill = getSkillData();                
-                objdb.sp_jobPostInsert(Convert.ToInt32(Session["id"]), objCls.JobTitle, objCls.JobDes, objCls.JobLoc, objCls.Experience, objCls.Skill, objCls.Qual, objCls.PassOutYear, objCls.StartDate, objCls.EndDate, objCls.JobType, "Active");
+                objdb.sp_jobPostInsert(Convert.ToInt32(Session["id"]), objCls.JobTitle, objCls.JobDes, objCls.JobLoc, objCls.Experience, objCls.Skill, objCls.Qual, objCls.PassOutYear, objCls.StartDate, objCls.EndDate, objCls.JobType, "Active",objCls.Salary);
                 JobPost newObj = new JobPost();
                 newObj.MyQual = getQualificationData();
                 newObj.MySkill = getSkillData();

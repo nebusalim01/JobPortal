@@ -10,23 +10,13 @@
 namespace JobPortal
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class job_table
+    public partial class sp_SelectOneJob_Result
     {
-        public int Job_Id { get; set; }
-        public int Company_Id { get; set; }
         public string Job_Title { get; set; }
+        public string Company_Name { get; set; }
         public string Job_Description { get; set; }
         public string Job_Location { get; set; }
-        public int Job_Experience { get; set; }
-        public string Job_Skills { get; set; }
-        public string Job_Qualifications { get; set; }
-        public int Passout_Year { get; set; }
-        public System.DateTime Start_Date { get; set; }
-        public System.DateTime End_Date { get; set; }
-        public string Job_Type { get; set; }
-        public string Job_Status { get; set; }
         public string Job_Salary { get; set; }
     }
 }
