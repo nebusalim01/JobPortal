@@ -8,26 +8,31 @@
 @using (Html.BeginForm("SearchJob_Click", "UserProfile", FormMethod.Post))
 {
     <table style="width: 100%; border: 1px solid lightgray; background-color: LightGray;">
-    <tr>
-        <td style="width: 25%; padding-right: 10px;">
-            @Html.TextBoxFor(m => m.insertse.Job_Skills,
-            new { @style = "width: 100%;", placeholder = "Skills" })
-        </td>
+        <tr>
+            <td style="width: 25%; padding-right: 10px;">
+                @Html.TextBoxFor(m => m.insertse.Job_Skills,
+                new { @style = "width: 100%;", placeholder = "Skills" })
+            </td>
 
-        <td style="width: 25%; padding-right: 10px;">
-            @Html.TextBoxFor(m => m.insertse.Job_Experience,
-            new { @style = "width: 100%;", placeholder = "Experience" })
-        </td>
+            <td style="width: 25%; padding-right: 10px;">
+                @Html.TextBoxFor(m => m.insertse.Job_Experience,
+                new { @style = "width: 100%;", placeholder = "Experience" })
+            </td>
 
-        <td style="width: 25%; padding-right: 10px;">
-            @Html.TextBoxFor(m => m.insertse.Job_Location,
-            new { @style = "width: 100%;", placeholder = "Location" })
-        </td>
+            <td style="width: 25%; padding-right: 10px;">
+                @Html.TextBoxFor(m => m.insertse.Job_Location,
+                new { @style = "width: 100%;", placeholder = "Location" })
+            </td>
 
-        <td style="width: 25%; text-align: right;">
-            <input type="submit" value="Search"
-                   class="buttons"
-                   style="background-color: navy; color: white; padding: 5px 10px;" />
+            <td style="width: 25%; padding-right: 10px;">
+                @Html.TextBoxFor(m => m.insertse.Job_Title,
+                new { @style = "width: 100%;", placeholder = "Title" })
+            </td>
+
+            <td style="width: 25%; text-align: right;">
+                <input type="submit" value="Search"
+                       class="buttons"
+                       style="background-color: navy; color: white; padding: 5px 10px;" />
             </td>
         </tr>
     </table>

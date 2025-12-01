@@ -59,6 +59,10 @@ namespace JobPortal.Controllers
             {
                 qry += " and Job_Location like '%" + objcls.insertse.Job_Location + "%'";
             }
+            if (!string.IsNullOrWhiteSpace(objcls.insertse.Job_Title))
+            {
+                qry += "and Job_Title like '%" + objcls.insertse.Job_Title + "%'";
+            }
 
             return View("UserProfile_Pageload", getdata(objcls, qry));
         }
