@@ -24,7 +24,8 @@ namespace JobPortal.Controllers
                 var job = new jobList
                 {
                     Job_id = d.Job_Id,
-                    Company_id = d.Company_Id,
+                    Company_id=d.Company_Id,
+                    Company_name=d.Company_Name,
                     Job_Title = d.Job_Title,
                     Job_description = d.Job_Description,
                     Job_Experience = d.Job_Experience.ToString(),
@@ -84,7 +85,8 @@ namespace JobPortal.Controllers
                     var jobcls = new jobList();
 
                     jobcls.Job_id = Convert.ToInt32(dr["Job_Id"].ToString());
-                    jobcls.Company_id = Convert.ToInt32(dr["Company_Id"].ToString());
+                    jobcls.Company_id = Convert.ToInt32(dr["Company_Id"]);
+                    jobcls.Company_name = dr["Company_Name"].ToString();
                     jobcls.Job_Title = dr["Job_Title"].ToString();
                     jobcls.Job_description = dr["Job_Description"].ToString();
                     jobcls.jobtype_name = dr["Job_Type"].ToString();

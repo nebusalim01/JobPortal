@@ -33,7 +33,7 @@ namespace JobPortal.Controllers
         {
             if (file.ContentLength > 0)
             {
-                int appcount = Convert.ToInt32(objdb.sp_AppCount(Convert.ToInt32(Session["id"]), Convert.ToInt32(TempData["jid"])).FirstOrDefault());
+                int appcount = Convert.ToInt32(objdb.sp_AppCount(Convert.ToInt32(Session["id"]), Convert.ToInt32(Session["jid"])).FirstOrDefault());
                 if (appcount == 0)
                 {
                     string fname = Path.GetFileName(file.FileName);

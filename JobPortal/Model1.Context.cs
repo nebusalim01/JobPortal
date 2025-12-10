@@ -234,11 +234,6 @@ namespace JobPortal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobPostInsert", cidParameter, titleParameter, desParameter, locParameter, expParameter, sklParameter, qulParameter, pasParameter, stdateParameter, enddatParameter, jtypParameter, stsParameter, salParameter);
         }
     
-        public virtual ObjectResult<sp_selectAllJob_Result> sp_selectAllJob()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectAllJob_Result>("sp_selectAllJob");
-        }
-    
         public virtual int sp_jobSearch(string qry)
         {
             var qryParameter = qry != null ?
@@ -246,16 +241,6 @@ namespace JobPortal
                 new ObjectParameter("qry", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobSearch", qryParameter);
-        }
-    
-        public virtual ObjectResult<sp_selectAllJob1_Result> sp_selectAllJob1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectAllJob1_Result>("sp_selectAllJob1");
-        }
-    
-        public virtual ObjectResult<sp_selectJobs_Result> sp_selectJobs()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectJobs_Result>("sp_selectJobs");
         }
     
         public virtual ObjectResult<Nullable<int>> sp_AppCount(Nullable<int> uid, Nullable<int> jid)
@@ -307,6 +292,11 @@ namespace JobPortal
                 new ObjectParameter("jid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SelectOneJob_Result>("sp_SelectOneJob", cidParameter, jidParameter);
+        }
+    
+        public virtual ObjectResult<sp_selectJobs_Result> sp_selectJobs()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectJobs_Result>("sp_selectJobs");
         }
     }
 }

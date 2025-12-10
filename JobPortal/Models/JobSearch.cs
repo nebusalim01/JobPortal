@@ -22,6 +22,7 @@ namespace JobPortal.Models
 
         public int Company_id { get; set; }
 
+        public string Company_name { set; get; }
 
         public string Job_Title { get; set; }
 
